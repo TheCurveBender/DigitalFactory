@@ -6,7 +6,7 @@ Because elastic curves describe the shape of a flexible blade, the algorithms ca
 
 ## Getting started
 
-In the folder "For Rhino" we include "demoElasticaTools.py" that contains demonstration of the features from the dll files.
+In the folder "For Rhino" we include "demoElasticaTools.py" that contains demonstration of the features from the dll files. In the folder "MATLAB prototypes" we include prototypes of features developed in MATLAB.
 
 ### Prerequisites
 
