@@ -186,7 +186,9 @@ while True:
 
 In the folder "MATLAB prototypes" we include MATLAB code for the following features:
 
-- Projection tool in the fo
+- Projection tool in the folder "Projection". Test the projection with demo.m that calls the projection in BezProj.m. The code projects a cubic Bézier curve to a cubic Bézier curve close to an elastic curve.
+
+![Projection of a cubic Bézier curve to a cubic Bézier curve close to an elastic curve](projection.png)
 
 ## Authors
 
