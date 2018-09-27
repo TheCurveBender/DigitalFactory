@@ -190,7 +190,9 @@ In the folder "MATLAB prototypes" we include MATLAB code for the following featu
 
 ![Projection of a cubic Bézier curve to a cubic Bézier curve close to an elastic curve](projection.png)
 
-- 
+- Surface tool in the folder "SurfaceDesign". Run demo.m to make a surface description of an elastic spline foliation. For more details see reference 3.
+
+![Surface foliation of elastic splines](Surface.png)
 
 ## Authors
 
@@ -199,15 +201,15 @@ Technical University of Denmark.
 
 ### References
 
-Approximation by planar elastic curves
+1. Approximation by planar elastic curves
 David Brander, Jens Gravesen, Toke Bjerge Nørbjerg.
 Advances in Computational Mathematics, 2017.
 
-Bézier curves that are close to elastica
+2. Bézier curves that are close to elastica
 David Brander, J. Andreas Bærentzen, Ann-Sofie Fisker, Jens Gravesen.
 Computer-Aided Design, 2018.
 
-Designing interactively with elastic splines
+3. Designing interactively with elastic splines
 David Brander, J. Andreas Bærentzen, Ann-Sofie Fisker, Jens Gravesen.
 Computer-Aided Geometric Design, 2018. 
 
