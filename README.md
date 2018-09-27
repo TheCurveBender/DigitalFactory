@@ -192,7 +192,7 @@ In the folder "MATLAB prototypes" we include MATLAB code for the following featu
 
 - Surface tool in the folder "SurfaceDesign". Run demo.m to make a surface description of an elastic spline foliation. For more details see reference 3.
 
-![Surface foliation of elastic splines](Surface.png)
+![Surface foliatied by elastic splines](surface.png)
 
 ## Authors
 
