@@ -190,6 +190,7 @@ In the folder "MATLAB prototypes" we include MATLAB code for the following featu
 
 ![Projection of a cubic Bézier curve to a cubic Bézier curve close to an elastic curve](projection.png)
 
+- 
 ## Authors
 
 David Brander, J. Andreas Bærentzen, Ann-Sofie Fisker, Jens Gravesen.
