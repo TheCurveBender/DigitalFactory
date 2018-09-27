@@ -180,6 +180,8 @@ while True:
     if not actvpt:
         break
 ```
+![Data-driven elastic spline tool with four segments](elastic_spline_data.png)
+
 
 ### MATLAB
 
