@@ -42,6 +42,8 @@ from ElasticaForRhino import Elastica
 import cPickle as pickle
 ```
 
+In the demonstration we test:
+
 - a discrete Elastica boundary value solver. Given endpoints, end tangents, and curve length we compute a dicrete elastica satisfying these conditions.
 
 ```
@@ -60,9 +62,35 @@ iter = e.discrete_elastica(0,0, 1,0, 0,1,1,1, 2, 100, P_discrete_elastica)
 add_curve_to_rhino(P_discrete_elastica, 100+1)
 ```
 
-![alt text](http://url/to/img.png)
+![](boundarysolver.png)
 
-- 
+- Estimation of an analytical elastic curve given a set of points.
+
+```
+e = Elastica()
+curve = rs.GetObject("Choose planar curve (z=0) to estimate elastica",4,True)
+domain = rs.CurveDomain(curve)
+P_samples = Array.CreateInstance(Double,(101)*2)
+for i in range(0,101*2,2):
+    t = domain[0]*(1-(i/202))+(i/202)*domain[1]
+    P = rs.EvaluateCurve(curve,t)
+    P_samples[i] = P[0]
+    P_samples[i+1] = P[1]
+
+options = Array.CreateInstance(Double,1)
+analytic_elastica_params = Array.CreateInstance(Double,9)
+options = Array.CreateInstance(Double,1)
+e.compute_elastica_parameters(P_samples, 101, options, analytic_elastica_params)
+```
+
+- Evaluation of elastica given the seven parameters analytic_elastica_params.
+
+```
+samples = Array.CreateInstance(Double, 2*100)
+e.sample_elastica(analytic_elastica_params, -0.15, 1.15, 100, samples)
+add_curve_to_rhino(samples, 100)
+```
+
 
 ### MATLAB
 
@@ -72,6 +100,10 @@ David Brander, J. Andreas Bærentzen, Ann-Sofie Fisker, Jens Gravesen.
 Technical University of Denmark.
 
 ### References
+
+Approximation by planar elastic curves
+David Brander, Jens Gravesen, Toke Bjerge Nørbjerg.
+Advances in Computational Mathematics, 2017.
 
 Bézier curves that are close to elastica
 David Brander, J. Andreas Bærentzen, Ann-Sofie Fisker, Jens Gravesen.
