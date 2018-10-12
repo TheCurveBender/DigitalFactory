@@ -6,15 +6,15 @@ Because elastic curves describe the shape of a flexible blade, the algorithms ca
 
 ## Getting started
 
-In the folder "For Rhino" we include "demoElasticaTools.py" that contains demonstration of the features from the dll files. In the folder "MATLAB prototypes" we include prototypes of features developed in MATLAB.
+In the folder "ForRhino" we include "demoElasticaTools.py" that contains demonstration of the features from the dll file. In the folder "MATLAB prototypes" we include features developed in MATLAB.
 
 ### Prerequisites
 
-The code in the folder "For Rhino" was developed for Rhinoceros 5 64 bit. The MATLAB code was developed using MATLAB R2016b.
+The code in the folder "ForRhino" was developed for Rhinoceros 5 64 bit. The MATLAB code was developed using MATLAB R2016b.
 
 ### Installing
 
-To test the features for Rhino: download the folder "For Rhino", open Rhinoceros and the Python editor (command: "EditPythonScript"). Once the Python editor is open, open the file "demoElasticaTools.py" and run the script (click on the green arrow).
+To test the features for Rhino: download the folder "ForRhino", open Rhinoceros and the Python editor (command: "EditPythonScript"). Once the Python editor is open, open the file "demoElasticaTools.py" and run the script.
 
 To test the MATLAB prototypes download the MATLAB files in the folder for the prototypes and run the prototype directly from MATLAB.
 
@@ -22,7 +22,7 @@ To test the MATLAB prototypes download the MATLAB files in the folder for the pr
 
 ### Rhinoceros
 
-In the folder "For Rhino" we include the demoElasticaTools.py that contains demonstration of the features from the dll files.
+In the folder "Fo Rhino" we include the demoElasticaTools.py that contains demonstrations of the features from the dll files.
 At the top of the file we write:
 
 ```
@@ -36,8 +36,8 @@ import sys
 from System import Array
 from System import Double
 import clr
-clr.AddReferenceToFileAndPath("DyLibs/ElasticaForRhino")
-from ElasticaForRhino import Elastica
+clr.AddReferenceToFileAndPath("DyLibs/ElasticaForRhino_GITHUBV2")
+from ElasticaForRhino_GITHUBV2 import Elastica
 import cPickle as pickle
 ```
 
@@ -57,34 +57,17 @@ def add_curve_to_rhino(P, N):
 
 e = Elastica()
 P_discrete_elastica = Array.CreateInstance(Double,(101)*2)
-iter = e.discrete_elastica(0,0, 1,0, 0,1,1,1, 2, 100, P_discrete_elastica)
+iter = e.discrete_elastica(0,0, 1,0, 0,1,1,1, 2, 100, P_discrete_elastica) #p1_x,p1_y, p2_x,p2_y, t1_x,t1_y,t2_x,t2_y,L,number_pts,output
 add_curve_to_rhino(P_discrete_elastica, 100+1)
 ```
 
 ![Boundary solver](boundarysolver.png)
 
-- Estimation of an analytical elastic curve given a set of points.
+
+- Evaluation of elastica given the seven parameters (k,s0,l,scale,angle,x0,y0) + 1 parameter (inflectional or non-inflectional). The parametrization of an elastic curve is given in Reference 1. 
 
 ```
-e = Elastica()
-curve = rs.GetObject("Choose planar curve (z=0) to estimate elastica",4,True)
-domain = rs.CurveDomain(curve)
-P_samples = Array.CreateInstance(Double,(101)*2)
-for i in range(0,101*2,2):
-    t = domain[0]*(1-(i/202))+(i/202)*domain[1]
-    P = rs.EvaluateCurve(curve,t)
-    P_samples[i] = P[0]
-    P_samples[i+1] = P[1]
-
-options = Array.CreateInstance(Double,1)
-analytic_elastica_params = Array.CreateInstance(Double,9)
-options = Array.CreateInstance(Double,1)
-e.compute_elastica_parameters(P_samples, 101, options, analytic_elastica_params)
-```
-
-- Evaluation of elastica given the seven parameters analytic_elastica_params.
-
-```
+analytic_elastica_params = Array[float]([0.65, 0, 20,2, 1.4, 1, 1,1]) #k in [0,1), s0, l, scale, angle, x0,y0, infl/ninfl
 samples = Array.CreateInstance(Double, 2*100)
 e.sample_elastica(analytic_elastica_params, -0.15, 1.15, 100, samples)
 add_curve_to_rhino(samples, 100)
@@ -92,7 +75,7 @@ add_curve_to_rhino(samples, 100)
 
 ![Estimation and evaluation](estimation_evaluation.png)
 
-- Data-driven design tool of elastic spline
+- Data-driven design tool of elastic spline. 
 ```
 e = Elastica()
 
