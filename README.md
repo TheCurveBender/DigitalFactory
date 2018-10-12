@@ -73,7 +73,7 @@ e.sample_elastica(analytic_elastica_params, -0.15, 1.15, 100, samples)
 add_curve_to_rhino(samples, 100)
 ```
 
-![Estimation and evaluation](estimation_evaluation.png)
+![Estimation and evaluation](evaluation.png)
 
 - Data-driven design tool of elastic spline. 
 ```
