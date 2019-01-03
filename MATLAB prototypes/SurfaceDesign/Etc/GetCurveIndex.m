@@ -13,7 +13,7 @@ pause
 if numel(pout) == 0
     index = inf;
 else
-    yvals= linspace(0,opt.bL,opt.nICurves);
+    yvals= opt.yvals; %linspace(0,opt.bL,opt.nICurves);
     [~, index] = min(abs(yvals-pout(2)));
     index_long = 1+opt.nBlocks*(index-1);
     for j = 1:opt.nICurves*opt.nBlocks
